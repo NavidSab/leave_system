@@ -37,6 +37,7 @@
                             <th>To</th>
                             <th> Department</th>
                             <th> Document</th>
+                            <th> Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -51,7 +52,15 @@
                             <td>
                                 <a href="{{ $leave->document }}" class="btn btn-primary waves-effect waves-float waves-light">Download</a>
                             </td>
-
+                            <td>
+                                @if($leave->admin_confirmed == '0')
+                                <a type="btn" class="btn btn-warning waves-effect waves-float waves-light">Pending</a>
+                                @elseif($leave->admin_confirmed == '1')
+                                <a type="btn" class="btn btn-success waves-effect waves-float waves-light">Aproved</a>
+                                @elseif($leave->admin_confirmed == '2')
+                                <a href="{{ $leave->document }}" class="btn btn-danger waves-effect waves-float waves-light">Reject</a>
+                                @endif
+                            </td>
                             <td>
                                 <div class="dropdown">
                                     <button
@@ -60,32 +69,28 @@
                                         data-bs-toggle="dropdown">
                                         <i data-feather="more-vertical"></i>
                                     </button>
+                                    @if(auth()->user()->hasRole('admin'))
                                     <div class="dropdown-menu">
-                                        @if(auth()->user()->hasRole('admin'))
                                         <a class="dropdown-item" href="{{ route('leave.edit',$leave->id) }}">
                                             <i data-feather="edit-2" class="me-50"></i>
                                             <span>Edit</span>
                                         </a>
-
                                            <form id="delete-form" action="{{ route('leave.destroy',$leave->id) }}" method="POST" class="d-none">
                                             @csrf
                                             </form>
                                            <a class="dropdown-item"  href="javascript:void(0)" onclick="event.preventDefault(); document.getElementById('delete-form').submit();"><i data-feather="trash" class="me-50"></i>Delete</a>
                                    
-                                           @endif
                                         </div>
+                                        @endif
                                 </div>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-
             </div>
-
         </div>
         {!! $leaves->render() !!}
-
     </div>
 </div>
 <!-- Basic Tables end -->
