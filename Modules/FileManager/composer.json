@@ -1,0 +1,26 @@
+{
+    "name": "nwidart/filemanager",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "require": {
+        "intervention/image": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\FileManager\\": ""
+        }
+    }
+}

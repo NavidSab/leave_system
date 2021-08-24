@@ -1,0 +1,14 @@
+{
+    "Dashboard": true,
+    "FileManager": true,
+    "RolePermission": true,
+    "Auth": true,
+    "User": true,
+    "Menu": true,
+    "Department": true,
+    "Leave": true,
+    "Acl": true,
+    "College": true,
+    "Program": true,
+    "Document": true
+}
