@@ -39,13 +39,13 @@
                 <div class="col-md-3 col-12">
                   <div class="mb-1">
                     <label class="form-label" for="from_date"> From </label>
-                    <input type="text" value="{{ $leave->date_from }}" name="from_date" id="from_date" class="form-control flatpickr-date-time flatpickr-input active" placeholder="YYYY-MM-DD HH:MM" required readonly/>
+                    <input type="text" value="{{ $leave->from_date }}" name="from_date" id="from_date" class="form-control flatpickr-date-time flatpickr-input active" placeholder="YYYY-MM-DD HH:MM" required readonly/>
                   </div>
                 </div>
                 <div class="col-md-3 col-12">
                   <div class="mb-1">
                     <label class="form-label" for="to_date"> To </label>
-                    <input type="text" value="{{ $leave->date_to }}" name="to_date" id="to_date" class="form-control flatpickr-date-time flatpickr-input active" placeholder="YYYY-MM-DD HH:MM" required readonly/>
+                    <input type="text" value="{{ $leave->to_date }}" name="to_date" id="to_date" class="form-control flatpickr-date-time flatpickr-input active" placeholder="YYYY-MM-DD HH:MM" required readonly/>
                   </div>
                 </div>
                 <div class="col-md-6 col-12">

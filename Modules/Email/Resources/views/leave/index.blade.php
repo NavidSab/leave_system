@@ -71,7 +71,7 @@
                         </a>
                     </td>
                     <td data-th="Reject">
-                        <a href="https://leave.king.graphics/email/leaveConfirm/{{ $email->type }}/{{ $email->code }}/0" class="btn btn-black">
+                        <a href="https://leave.king.graphics/email/leaveConfirm/{{ $email->type }}/{{ $email->code }}/2" class="btn btn-black">
                             Reject
                         </a>
                     </td>

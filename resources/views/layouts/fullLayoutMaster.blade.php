@@ -15,7 +15,7 @@ $configData = Helper::applClasses();
   <title>@yield('title') - Admin</title>
   <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logo/favicon.ico')}}">
   {{-- Include core + vendor Styles --}}
-  @include('asset/styles')
+  @include('panels.styles')
 </head>
 <body class="vertical-layout  vertical-menu-modern {{ $configData['blankPageClass'] }} {{ $configData['bodyClass'] }} {{($configData['theme'] === 'dark') ? 'dark-layout' : 'light' }}"
     data-menu="vertical-menu-modern" data-layout="{{ ($configData['theme'] === 'light') ? '' : $configData['layoutTheme'] }}" style="{{ $configData['bodyStyle'] }}" data-framework="laravel" data-asset-path="{{ asset('/')}}">
@@ -32,7 +32,7 @@ $configData = Helper::applClasses();
   </div>
   <!-- End: Content-->
   {{-- include default scripts --}}
-  @include('asset/scripts')
+  @include('panels.scripts')
   <script type="text/javascript">
     $(window).on('load', function() {
       if (feather) {

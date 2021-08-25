@@ -1,6 +1,12 @@
 <?php
 namespace Modules\Email\Repositories;
 use Modules\Email\Entities\Email;
+use Modules\Leave\Entities\Leave;
+use Modules\User\Entities\User;
+use Modules\Department\Entities\Department;
+use DB;
+use Auth;
+
 class EmailRepo
 {
     public function storeLeave(Leave $leave)
@@ -45,7 +51,7 @@ class EmailRepo
 
     public function confirmLeave($request)
     {
-        $email = Email::where(['is_send'=>1,'code'=>$request->code])->update([
+        $email = Email::where(['is_send'=>1,'code'=>$request->code,'is_confirme'=>0])->update([
             'is_confirme'        =>$request->approve
         ]);
         return $email;

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Mail;
 use Modules\Email\Entities\Email;
 use Modules\Leave\Entities\Leave;
 use Modules\Email\Http\Mail\LeaveRequest;
+use Modules\Email\Http\Mail\LeaveUserApprove;
+
 class SendLeaveEmail extends Command
 {
     /**
@@ -42,21 +44,24 @@ class SendLeaveEmail extends Command
          foreach($email as $emails){
              if($emails->type =='head'){
                 Mail::to($emails->email)->send(new LeaveRequest($emails));
-                $emails->is_send=1;
-                $emails->save();
-                }
+                if (Mail::failures()) {die();};
+                    $emails->is_send=1;
+                    $emails->save();
+                }            
+                
                 if($emails->type =='admin'){
                     $head_user=Email::where(['leave_id'=>$emails->leave_id,'type'=>'head'])->get();
                     foreach( $head_user as $user){
-                        if($user->is_confirm ='1'){
+                        if($user->is_confirme =='1'){
                             $i++;
                         }
                     }
                     if($head_user->count() == $i){
                     Mail::to($emails->email)->send(new LeaveRequest($emails));
-                    $emails->is_send=1;
-                    $emails->save();
-                    $i=0;
+                    if (Mail::failures()) {die();};
+                        $emails->is_send=1;
+                        $emails->save();
+                    
                     }
                }
             }
@@ -66,6 +71,16 @@ class SendLeaveEmail extends Command
                 if($email->count() > 0){
                     $leaves->admin_confirmed=1;
                     $leaves->save();
+                    Mail::to($leaves->user->email)->send(new LeaveUserApprove($leaves));
+                        if (Mail::failures()) {die();};
+                    
+                }
+                $email=Email::where(['leave_id'=>$leaves->id,'type'=>'admin','is_confirme'=>2])->get();
+                if($email->count() > 0){
+                    if (Mail::failures()) {die();};
+                    $leaves->admin_confirmed=2;
+                    $leaves->save();
+                    Mail::to($leaves->user->email)->send(new LeaveUserApprove($leaves));                    
                 }
             }
     }

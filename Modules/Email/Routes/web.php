@@ -19,6 +19,10 @@ Route::prefix('email')->group(function() {
         $invoice = Modules\Email\Entities\Email::find(34);
         return new  Modules\Email\Http\Mail\LeaveRequest($invoice);
     });
+    Route::get('/test1', function () {
+        $leave = Modules\Leave\Entities\Leave::find(54);
+        return new  Modules\Email\Http\Mail\LeaveUserApprove($leave);
+    });
 });
 
 

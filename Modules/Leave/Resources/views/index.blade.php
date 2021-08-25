@@ -46,8 +46,8 @@
                         <tr>
                             <td>{{ $leave->id }}</td>
                             <td>{{ $leave->user->name }}</td>
-                            <td>{{ $leave->date_from }}</td>
-                            <td>{{ $leave->date_to }}</td>
+                            <td>{{ $leave->from_date }}</td>
+                            <td>{{ $leave->to_date }}</td>
                             <td>{{ $leave->department->name }}</td>
                             <td>
                                 <a href="{{ $leave->document }}" class="btn btn-primary waves-effect waves-float waves-light">Download</a>

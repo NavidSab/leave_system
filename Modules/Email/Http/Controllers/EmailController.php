@@ -18,7 +18,14 @@ class EmailController extends Controller
     }
     public function leaveConfirm(Request $request){
         $confirm=$this->emailRepo->confirmLeave($request);
-        return redirect()->route('email')->with('success','Your Request Is Send!');
+        if($confirm ){
+            return redirect()->route('email')->with('Success','Your request has been successfully submitted.');
+        }
+        else
+        {
+            return redirect()->route('email')->with('Failed','You have already submitted this request.');
+
+        }
     }
     public function index(){
         return view('email::message.index');
