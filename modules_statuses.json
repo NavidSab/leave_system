@@ -10,5 +10,7 @@
     "Acl": true,
     "College": true,
     "Program": true,
-    "Document": true
+    "Document": true,
+    "Email": true,
+    "Log": true
 }

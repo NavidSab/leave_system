@@ -7,7 +7,7 @@ use Modules\Department\Entities\Department;
 
 class Leave extends Model
 {
-    protected $fillable = ['date_to','user_id','department_id','document','date_from'];
+    protected $fillable = ['to_date','user_id','department_id','document','from_date'];
 
 
     public function user()

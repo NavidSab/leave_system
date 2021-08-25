@@ -33,8 +33,8 @@ class LeaveRepo
             return Leave::create([
                 'department_id'     => $request->department_id,
                 'user_id'           => Auth::user()->id,
-                'date_from'         => $request->date_from,
-                'date_to'           => $request->date_to,
+                'from_date'         => $request->from_date,
+                'to_date'           => $request->to_date,
                 'document'          => $document
             ]);
         }
@@ -42,8 +42,8 @@ class LeaveRepo
             return Leave::create([
                 'department_id'     => $request->department_id,
                 'user_id'           => Auth::user()->id,
-                'date_from'         => $request->date_from,
-                'date_to'           => $request->date_to,    
+                'from_date'         => $request->from_date,
+                'to_date'           => $request->to_date,    
             ]);
         }
     }

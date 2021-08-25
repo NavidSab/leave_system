@@ -14,8 +14,8 @@ class UpdateLeaveRequest extends FormRequest
     public function rules()
     {
         return [
-            'date_from'     => 'required',
-            'date_to'        => 'required',
+            'from_date'     => 'required',
+            'to_date'        => 'required',
             'department_id'  => 'required',
         ];
     }

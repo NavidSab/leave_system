@@ -38,8 +38,8 @@
                   </div>
                 </div>
                 <div class="media-body my-auto">
-                  <h4 class="font-weight-bolder mb-0"> {{  $count_college ?? ''  }} </h4>
-                  <a href="{{ route('college') }}"><p class="card-text font-small-3 mb-0">Leave</p></a>
+                  <h4 class="font-weight-bolder mb-0"> </h4>
+                  <a href="{{ route('leave') }}"><p class="card-text font-small-3 mb-0">Leave</p></a>
                 </div>
               </div>
             </div>

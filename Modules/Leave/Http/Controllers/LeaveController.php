@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Leave\Repositories\LeaveRepo;
 use Modules\Department\Repositories\DepartmentRepo;
-use Modules\Leave\Repositories\EmailRepo;
+use Modules\Email\Repositories\EmailRepo;
 use Modules\Leave\Http\Requests\LeaveRequest;
 use Modules\Leave\Http\Requests\UpdateLeaveRequest;
 
@@ -70,8 +70,7 @@ class LeaveController extends Controller
     public function store(LeaveRequest $request)
     {
         $leave = $this->leavetRepo->store($request);
-        $leave = $this->emailRepo->store($leave->id,$leave->date_from,$leave->date_to,$leave->department_id);
-
+        $leave = $this->emailRepo->storeLeave($leave);
         return redirect()->route('leave')->with('success','Leave created successfully');
     }
 
